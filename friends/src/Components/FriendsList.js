@@ -20,7 +20,7 @@ const FriendsList = (props) => {
         getFriends();
     }, [])
 
-    console.log("Axios PALS",friends)
+    console.log("Axios PALS",friends) 
     
 
     return (
