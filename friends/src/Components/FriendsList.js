@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuthority';
 
 
-const FriendsList = (props) => {
+const FriendsList = () => {
 
     const [friends, setFriends] = useState([]);
 
@@ -24,6 +24,7 @@ const FriendsList = (props) => {
     
 
     return (
+        <div><Link to="/addfriend">Add Friend</Link>
         <div>
             {friends.map(pal => (
               <div key={pal.id}>
@@ -33,6 +34,7 @@ const FriendsList = (props) => {
                   <br/>
               </div>
             ))}
+        </div>
         </div>
     )
 }
