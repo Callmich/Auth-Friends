@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { axiosWithAuth } from '../Utils/axiosWithAuthority';
 
-const Login = () => {
+const Login = (props) => {
 
     const [cred, setCred] = useState({
         credentials: {
@@ -33,7 +33,7 @@ const Login = () => {
         .then(res => {
             console.log("Login Response", res)
             localStorage.setItem('token', JSON.stringify(res.data.payload))
-            // props.history.push('/friends')
+            props.history.push('/friends')
         })
         .catch(err => {
             console.log("There was an",err.response)
