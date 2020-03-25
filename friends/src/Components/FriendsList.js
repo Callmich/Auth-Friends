@@ -6,6 +6,22 @@ import { axiosWithAuth } from '../Utils/axiosWithAuthority';
 const FriendsList = () => {
 
     const [friends, setFriends] = useState([]);
+    const [userId, setUserId] = useState("")
+
+
+
+    console.log("Axios PALS",friends) 
+
+    function deleteFriend(pal){
+        axiosWithAuth()
+        .delete(`/api/friends/${pal}`)
+        .then(res=> {
+            console.log("delete", res)
+        })
+        .catch(err => {
+            console.log("delete err", err)
+        })
+    }
 
     useEffect(()=> {
         const getFriends= () => {
@@ -18,9 +34,7 @@ const FriendsList = () => {
             .catch(error=> {console.log("Friends Error", error)})
         }
         getFriends();
-    }, [])
-
-    console.log("Axios PALS",friends) 
+    }, [deleteFriend()])
     
 
     return (
@@ -31,6 +45,7 @@ const FriendsList = () => {
                   <h2>Name: {pal.name}</h2>
                   <h3>Age: {pal.age}</h3>
                   <h4>Email: {pal.email}</h4>
+                  <button onClick={()=>{deleteFriend(pal.id)}}>Fire Friend</button>
                   <br/>
               </div>
             ))}
